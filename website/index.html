@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Compiled and minified JavaScript -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+  <script src="../pizza.js"></script>
+  <script src="pizza.js"></script>
+  <script src="app.js"></script>
+  <title>Pizza</title>
+</head>
+<body>
+  <h1>Order Pizza</h1>
+  <div class="row button-row" id="pizza-sides">
+    <div class="col s3 card-panel teal lighten-2 pizza-topping">topping 1</div>
+    <div class="col s3 card-panel teal lighten-2 pizza-topping">topping 2</div>
+    <div class="col s3 card-panel teal lighten-2 pizza-topping">topping 3</div>
+    <div class="col s3 card-panel teal lighten-2 pizza-topping">topping 4</div>
+  </div>
+  <div class="row button-row" id="pizza-sizes">
+    <div class="col s4 card-panel teal lighten-2 pizza-size">small</div>
+    <div class="col s4 card-panel teal lighten-2 pizza-size">medium</div>
+    <div class="col s4 card-panel teal lighten-2 pizza-size">large</div>
+  </div>
+  <div class="row button-row">
+    <div class="col s12 card-panel teal lighten-2" id="add-to-order">Add to order</div>
+  </div>
+  <div class="row" id="current-pizza">
+    <div class="col s12 card-panel teal lighten-2"><p>Current Pizza: <span id="current-pizza-details"></span></p></div>
+  </div>
+  <div class="row" id="current-order">
+    <div class="col s12 card-panel teal lighten-2">
+      Current Order: 
+      <ul id="current-order-details">
+      </ul>
+    </div>
+  </div>
+  <div class="row" id="total-price">
+    <div class="col s12 card-panel teal lighten-2"><p>Total Price: <span id="total-price-details"></span></p></div>
+  </div>
+</body>
+</html>
