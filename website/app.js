@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", (event) => { 
 
+  // DOM Elements
+
   let pizzaDetails = document.querySelector("#current-pizza-details");
   let orderDetails = document.querySelector("#current-order-details");
   let totalPrice = document.querySelector('#total-price-details');
@@ -8,6 +10,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let addToOrderButton = document.querySelector("#add-to-order");
 
     
+  // Click Events
+
   for (let button of toppingButtons) {
     button.addEventListener('click', toppingButtonClicked);
   }
@@ -19,40 +23,38 @@ document.addEventListener("DOMContentLoaded", (event) => {
   addToOrderButton.addEventListener('click', (event) => {
     addPizzaToOrder();
   });
+
+  // Logics
   
-  function pizzaUpdated() {
-    // pizzaDetails.innerText = pizza.description();
-  }
-  function orderUpdated() {
-    // totalPrice.innerText = "$"+order.price();
-  }
+  let pizzaPage = {
+    updatePizzaUI: (pizza) => {
+      pizzaDetails.innerText = pizza.description();
+    }, 
+    updateOrderUI: (order) => {
+      orderDetails.innerHTML = "";
+      for (let pizza of order._pizzas) {
+        let listItem = document.createElement("li");
+        listItem.innerText = pizza.description();
+        orderDetails.appendChild(listItem);
+      }
+
+      totalPrice.innerText = "$"+order.price();
+    }
+  };
+
   function addPizzaToOrder() {
-    let listItem = document.createElement("li");
-    // listItem.innerText = pizza.description();
-    orderDetails.appendChild(listItem);
-
-    addCurrentPizzaToOrder();
-
-    // order.addPizza(pizza);
-    pizza = newPizza();
-
-    orderUpdated();
-    pizzaUpdated();
+    addCurrentPizzaToOrder(pizzaPage);
   }
-
-  orderUpdated();
-  pizzaUpdated();
 
   function toppingButtonClicked(event) {
     const topping = event.target.innerText;
-    addTopping(topping);
-    pizzaUpdated();
+    addTopping(pizzaPage, topping);
   }
 
   function sizeButtonClicked(event) {
     const size = event.target.innerText;
-    changeSize(size);
-    pizzaUpdated();
+    changeSize(pizzaPage, size);
   }
 
+  newOrderCreated(pizzaPage, newPizzaOrder());
 });
